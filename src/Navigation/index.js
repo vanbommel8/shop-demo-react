@@ -16,7 +16,7 @@ export default function Navigation() {
           >
             Basket
           </Typography>
-          <Badge badgeContent={1} color='primary'>
+          <Badge badgeContent={0} color='primary'>
             <ShoppingCartTwoToneIcon color='action' />
           </Badge>
         </Grid>
