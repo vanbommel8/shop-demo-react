@@ -13,7 +13,7 @@ export default function Books() {
     setBooks(
       filter === "All"
         ? booksMock
-        : booksMock.filter((book) => book.title === filter)
+        : booksMock.filter((book) => book.category === filter)
     );
   };
 
