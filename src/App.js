@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Basket from "./Basket";
 import Books from "./Books";
 
 import Navigation from "./Navigation";
@@ -8,6 +9,7 @@ function App() {
     <div className='App'>
       <Navigation />
       <Books />
+      <Basket />
     </div>
   );
 }

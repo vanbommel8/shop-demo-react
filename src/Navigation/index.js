@@ -6,7 +6,12 @@ export default function Navigation() {
   return (
     <Container fixed sx={{ mt: 4 }}>
       <Grid container spacing={2}>
-        <Grid item xs={4} sx={{ display: "flex" }}>
+        <Grid
+          item
+          xs={4}
+          sx={{ display: "flex", cursor: "pointer" }}
+          onClick={() => console.log("test")}
+        >
           <Typography
             variant='button'
             display='block'
