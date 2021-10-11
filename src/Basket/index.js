@@ -12,7 +12,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 
-export default function Basket({ opened = false }) {
+
+export default function Basket({ opened, dispatch, state }) {
+
   return (
     <Box
       sx={{
@@ -24,13 +26,14 @@ export default function Basket({ opened = false }) {
         left: 0,
         padding: "30px",
         color: "white",
-        transform: opened ? "translateX(0)" : "translateX(-100%)",
+        transform: state.opened ? "translateX(0)" : "translateX(-100%)",
         transition: "all 0.3s ease",
       }}
     >
       <Box sx={{ position: "relative" }}>
         <CloseIcon
           sx={{ position: "absolute", top: 0, right: 0, cursor: "pointer" }}
+          onClick={() => dispatch({ type: "CLOSED"})}
         />
         <Typography variant='button' component='div'>
           Your items

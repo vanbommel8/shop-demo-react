@@ -1,8 +1,11 @@
-import React from "react";
+import React from "react"
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import { Typography, Badge, Container, Grid } from "@mui/material";
 
-export default function Navigation() {
+export default function Navigation(props) {
+
+  
+
   return (
     <Container fixed sx={{ mt: 4 }}>
       <Grid container spacing={2}>
@@ -10,7 +13,7 @@ export default function Navigation() {
           item
           xs={4}
           sx={{ display: "flex", cursor: "pointer" }}
-          onClick={() => console.log("test")}
+          onClick={() => props.dispatch({ type: "OPENED" })}
         >
           <Typography
             variant='button'
