@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Stack, Paper, Chip } from "@mui/material";
 import SearchBar from "./SearchBar";
-
+import actions from "../../store/actions";
 const filters = ["All", "Design", "Mobile", "Ux", "DevOps", "Essentials"];
 
-export default function Filters({ selectedFilter, selectFilter }) {
+export default function Filters({ category, dispatch }) {
   return (
     <>
       <Stack direction='row' spacing={2} sx={{ my: 5 }}>
@@ -16,9 +15,9 @@ export default function Filters({ selectedFilter, selectFilter }) {
           <Chip
             key={filter}
             label={filter}
-            color={selectedFilter === filter ? "secondary" : "primary"}
-            onClick={() => selectFilter(filter)}
-            variant={selectedFilter === filter ? "filled" : "outlined"}
+            color={category === filter ? "secondary" : "primary"}
+            onClick={() => dispatch({ type: actions.setFilter, payload: filter })}
+            variant={category === filter ? "filled" : "outlined"}
           />
         ))}
       </Stack>

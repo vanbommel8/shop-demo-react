@@ -13,8 +13,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import { AppContext } from "../App";
 
-export default function Basket({ opened }) {
-  const { state, dispatch } = useContext(AppContext);
+export default function Basket() {
+  const [state, dispatch] = useContext(AppContext);
+  const { opened } = state.basket;
+
   return (
     <Box
       sx={{
@@ -26,14 +28,14 @@ export default function Basket({ opened }) {
         left: 0,
         padding: "30px",
         color: "white",
-        transform: state.opened ? "translateX(0)" : "translateX(-100%)",
+        transform: opened ? "translateX(0)" : "translateX(-100%)",
         transition: "all 0.6s ease",
       }}
     >
       <Box sx={{ position: "relative" }}>
         <CloseIcon
           sx={{ position: "absolute", top: 0, right: 0, cursor: "pointer" }}
-          onClick={() => dispatch({ type: "BASKETOGGLE" })}
+          onClick={() => dispatch({ type: "TOGGLE_BASKET" })}
         />
         <Typography variant='button' component='div'>
           Your items

@@ -1,27 +1,20 @@
 import { useReducer, createContext } from "react";
 import Basket from "./Basket";
 import Books from "./Books";
-
 import Navigation from "./Navigation";
 
-const INITIAL_STATE = { opened: false }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "BASKETOGGLE":
-      return { opened: !state.opened };
-    default:
-      return state;
-  }
-}
-
+import { reducer, initialState } from "./store/reducer";
 export const AppContext = createContext();
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+console.log(state);
+
   return (
     <div className='App'>
-      <AppContext.Provider value={{ state, dispatch }}>
+      <AppContext.Provider value={[state, dispatch]}>
         <Navigation />
         <Books />
         <Basket />
