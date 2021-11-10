@@ -13,9 +13,10 @@ export default function SearchBar() {
       <Input
         id='input-with-icon-adornment'
         name='name'
-        onChange={() =>
+        onChange={(event) =>
           dispatch({
-            type: "SEARCH_BOOKS"
+            type: "SEARCH_BOOKS",
+            payload: event.target.value
           })
         }
         startAdornment={
