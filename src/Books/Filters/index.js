@@ -16,9 +16,7 @@ export default function Filters({ category, dispatch }) {
             key={filter}
             label={filter}
             color={category === filter ? "secondary" : "primary"}
-            onClick={() =>
-              dispatch({ type: actions.setFilter, payload: filter })
-            }
+            onClick={() => dispatch({ type: actions.setFilter, payload: filter })}
             variant={category === filter ? "filled" : "outlined"}
           />
         ))}

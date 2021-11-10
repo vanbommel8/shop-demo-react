@@ -16,7 +16,10 @@ export default function SearchBar() {
         onChange={(event) =>
           dispatch({
             type: "SEARCH_BOOKS",
-            payload: event.target.value
+            payload: {
+              word: event.target.value,
+              category: state.filters.category,
+            },
           })
         }
         startAdornment={

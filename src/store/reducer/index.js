@@ -33,21 +33,26 @@ export function reducer(state, action) {
             return {
                 ...state,
                 filters: {
-                    word: action.payload || "",
-                    category: action.payload || "All",
+                    word: action.payload.word || "",
+                    category: action.payload.category || "All",
                 },
                 books: {
                     ...state.books,
                     filteredBooks:
-                        action.payload === "All"
-                            ? mockedBooks
-                            : mockedBooks.filter((book) => book.category === action.payload),
+                        action.payload.category === "All"
+                            ? mockedBooks.filter((books) =>
+                                books.title
+                                    .toLowerCase()
+                                    .includes(action.payload.word.toLowerCase())
+                            )
+                            : mockedBooks.filter(
+                                (books) =>
+                                    books.category === action.payload.category &&
+                                    books.title
+                                        .toLowerCase()
+                                        .includes(action.payload.word.toLowerCase())
+                            ),
                 },
-            };
-        }
-        case "SEARCH_BOOKS": {
-            return {
-                ...state,
             };
         }
         default:
