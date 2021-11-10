@@ -19,7 +19,9 @@ export const initialState = {
 };
 
 export function reducer(state, action) {
+    console.log("Libri mocckati", mockedBooks);
     console.log(action);
+
     switch (action.type) {
         case actions.toggleBasket:
             return {
@@ -31,8 +33,8 @@ export function reducer(state, action) {
             return {
                 ...state,
                 filters: {
-                    word: action.payload.word || "",
-                    category: action.payload.category || "All",
+                    word: action.payload || "",
+                    category: action.payload || "All",
                 },
                 books: {
                     ...state.books,

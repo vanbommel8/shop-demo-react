@@ -2,9 +2,8 @@ import { useReducer, createContext } from "react";
 import Basket from "./Basket";
 import Books from "./Books";
 import Navigation from "./Navigation";
-
-
 import { reducer, initialState } from "./store/reducer";
+
 export const AppContext = createContext();
 
 function App() {
