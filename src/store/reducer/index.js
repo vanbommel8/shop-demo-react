@@ -45,6 +45,11 @@ export function reducer(state, action) {
                 },
             };
         }
+        case "SEARCH_BOOKS": {
+            return {
+                ...state,
+            };
+        }
         default:
             return state;
     }
