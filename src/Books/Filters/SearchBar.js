@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Input, InputLabel, InputAdornment, FormControl } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import actions from "../../store/actions";
 import { AppContext } from "../../App";
 
 export default function SearchBar() {
@@ -17,7 +16,7 @@ export default function SearchBar() {
           dispatch({
             type: "SEARCH_BOOKS",
             payload: {
-              word: event.target.value,
+              title: event.target.value,
               category: state.filters.category,
             },
           })

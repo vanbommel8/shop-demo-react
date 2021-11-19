@@ -9,7 +9,7 @@ export const initialState = {
         opened: false,
     },
     filters: {
-        word: "",
+        title: "",
         category: "All"
     },
     books: {
@@ -33,25 +33,14 @@ export function reducer(state, action) {
             return {
                 ...state,
                 filters: {
-                    word: action.payload.word || "",
+                    title: action.payload.title || "",
                     category: action.payload.category || "All",
                 },
                 books: {
                     ...state.books,
-                    filteredBooks:
-                        action.payload.category === "All"
-                            ? mockedBooks.filter((books) =>
-                                books.title
-                                    .toLowerCase()
-                                    .includes(action.payload.word.toLowerCase())
-                            )
-                            : mockedBooks.filter(
-                                (books) =>
-                                    books.category === action.payload.category &&
-                                    books.title
-                                        .toLowerCase()
-                                        .includes(action.payload.word.toLowerCase())
-                            ),
+                    filteredBooks: mockedBooks.filter(
+                        (books) => books.category === action.payload
+                    ),
                 },
             };
         }
