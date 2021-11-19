@@ -33,14 +33,15 @@ export function reducer(state, action) {
             return {
                 ...state,
                 filters: {
-                    title: action.payload.title || "",
-                    category: action.payload.category || "All",
+                    title: action.payload || "",
+                    category: action.payload || "All",
                 },
                 books: {
                     ...state.books,
-                    filteredBooks: mockedBooks.filter(
-                        (books) => books.category === action.payload
-                    ),
+                    filteredBooks:
+                        action.payload === "All"
+                            ? mockedBooks
+                            : mockedBooks.filter((books) => books.category === action.payload),
                 },
             };
         }
@@ -48,3 +49,17 @@ export function reducer(state, action) {
             return state;
     }
 }
+
+
+// action.payload.category === "All"
+// ? mockedBooks.filter((books) =>
+//     books.title
+//     .toLowerCase()
+//     .includes(action.payload.title.toLowerCase())
+// )
+// : mockedBooks.filter(
+//     (books) =>
+//         books.category === action.payload.category &&
+//         books.title
+//         .toLowerCase()
+//         .includes(action.payload.title.toLowerCase())
