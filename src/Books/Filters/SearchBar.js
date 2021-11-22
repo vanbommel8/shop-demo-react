@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Input, InputLabel, InputAdornment, FormControl } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { AppContext } from "../../App";
+import actions from "../../store/actions";
 
 export default function SearchBar() {
   const [state, dispatch] = useContext(AppContext);
@@ -12,13 +13,10 @@ export default function SearchBar() {
       <Input
         id='input-with-icon-adornment'
         name='name'
-        onChange={(event) =>
+        onChange={(e) =>
           dispatch({
-            type: "SEARCH_BOOKS",
-            payload: {
-              title: event.target.value,
-              category: state.filters.category,
-            },
+            type: actions.setFilter,
+            payload: { word: e.target.value, category: state.filters.category },
           })
         }
         startAdornment={

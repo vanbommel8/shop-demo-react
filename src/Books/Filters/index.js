@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../App";
 import { Stack, Chip } from "@mui/material";
 import SearchBar from "./SearchBar";
 import actions from "../../store/actions";
-const filters = ["All", "Design", "Mobile", "Ux", "DevOps", "Essentials"];
 
-export default function Filters({ category, dispatch }) {
+const  filters = ["All", "Design", "Mobile", "Ux", "DevOps", "Essentials"];
+
+export default function Filters({ category }) {
+  const [, dispatch] = useContext(AppContext);
   return (
     <>
       <Stack direction='row' spacing={2} sx={{ my: 5 }}>
