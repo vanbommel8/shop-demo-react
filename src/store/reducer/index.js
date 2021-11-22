@@ -29,60 +29,64 @@ export function reducer(state, action) {
                 basket: { ...state.basket, opened: !state.basket.opened },
             };
 
+
         case actions.setFilter: {
             return {
                 ...state,
                 filters: {
-                    title: action.payload || "",
-                    category: action.payload || "All",
+                    word: action.payload.word || "",
+                    category: action.payload.category || "All",
                 },
                 books: {
                     ...state.books,
                     filteredBooks:
-                        action.payload === "All"
-                            ? mockedBooks
-                            : mockedBooks.filter((books) => books.category === action.payload),
+                        action.payload.category === "All"
+                            ? mockedBooks.filter((books) =>
+                                books.title
+                                    .toLowerCase()
+                                    .includes(action.payload.word.toLowerCase())
+                            )
+                            : mockedBooks.filter(
+                                (books) =>
+                                    books.category === action.payload.category &&
+                                    books.title
+                                        .toLowerCase()
+                                        .includes(action.payload.word.toLowerCase())
+                            ),
                 },
             };
         }
+
         default:
             return state;
     }
 }
 
 
-
-
 //         case actions.setFilter: {
-//     return {
-//         ...state,
-//         filters: {
-//             word: action.payload.word || "",
-//             category: action.payload || "All",
-//         },
-//         books: {
-//             ...state.books,
-//             filteredBooks:
-//                 action.payload.category === "All"
-//                     ? mockedBooks.filter((books) =>
-//                         books.title
-//                             .toLowerCase()
-//                             .includes(action.payload.word.toLowerCase())
-//                     )
-//                     : mockedBooks.filter(
-//                         (books) =>
-//                             books.category === action.payload.category &&
-//                             books.title
-//                                 .toLowerCase()
-//                                 .includes(action.payload.word.toLowerCase())
-//                     ),
-//         },
-//     };
-// }
-
+//             return {
+//                 ...state,
+//                 filters: {
+//                     title: action.payload || "",
+//                     category: action.payload || "All",
+//                 },
+//                 books: {
+//                     ...state.books,
+//                     filteredBooks:
+//                         action.payload === "All"
+//                             ? mockedBooks
+//                             : mockedBooks.filter((books) => books.category === action.payload),
+//                 },
+//             };
+//         }
 //         default:
-// return state;
+//             return state;
 //     }
 // }
+
+
+
+
+
 
 
