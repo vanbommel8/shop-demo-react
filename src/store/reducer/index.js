@@ -20,7 +20,7 @@ export const initialState = {
 
 export function reducer(state, action) {
     console.log("Libri mocckati", mockedBooks);
-    console.log(action);
+    console.log("CIAO, IO SONO L'ACTION DEL REDUCER", action);
 
     switch (action.type) {
         case actions.toggleBasket:

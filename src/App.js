@@ -9,7 +9,7 @@ export const AppContext = createContext();
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-console.log(state);
+console.log("CIAO, IO SONO LO STATE", state);
 
   return (
     <div className='App'>
